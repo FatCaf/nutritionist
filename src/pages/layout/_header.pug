@@ -1,0 +1,34 @@
+include ../../mixins/_mixins
+
+header.header
+  .header__top-bar
+    .container
+      div.header__promo 
+        img(src="/images/left-drawing.svg" alt="Left Drawing")
+        div.header__promo__inner
+          img(src="/images/header-top-icon.svg" alt="Promo Icon")
+          p Join Our Personalized Nutrition Demo For Free
+          span
+            img(src="/images/arrow-right-icon.svg" alt="Arrow Right Icon")
+        img(src="/images/right-drawing.svg" alt="Right Drawing")
+  .header__main
+    .container
+      .header__content
+        a.header__logo(href="/")
+          img(src="/images/logo.svg" alt="Nutritionist")
+        
+        button.burger-menu(type="button" aria-label="Toggle menu")
+          span.burger-menu__line
+          span.burger-menu__line
+          span.burger-menu__line
+        
+        nav.nav
+          ul.nav__list
+            +navLink('Home', '/')
+            +navLink('About', '/about.html')
+            +navLink('Team', '/team.html')
+            +navLink('Process', '/process.html')
+            +navLink('Pricing', '/pricing.html')
+            +navLink('Blog', '/blog.html')
+          .header__actions
+            a.header__contact(href="/contact.html") Contact Us

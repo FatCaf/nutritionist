@@ -1,0 +1,69 @@
+include ../../../mixins/_mixins
+
+section.about-story
+  .container
+    +sectionHeader('Our Story', 'How we started our journey to help people live healthier lives.')
+    
+    .about-story__content
+      -
+        const stories = [
+          {
+            title: 'Inspiring Transformations Story',
+            text: 'Nutritionist continues to empower individuals to transform their lives through personalized nutrition coaching. With an expanding client base and a growing team of experts, we remain committed to our goal of helping people lose weight, improve their health, and lead happier, more fulfilling lives. Our journey of inspiring transformations continues, one client at a time.',
+            date: 'July 1, 2025'
+          },
+          {
+            title: 'Recognition and Accolades Story',
+            text: 'Nutritionist received industry recognition for its excellence in personalized nutrition coaching. Our innovative approach and dedication to client success earned us accolades and solidified our position as a leading provider in the field.',
+            date: 'March 10, 2023'
+          },
+          {
+            title: 'Continued Growth Story',
+            text: 'Nutritionist reached a milestone of 500 active clients. We expanded our team of nutritionists and health coaches to provide even more personalized support and guidance. Our commitment to helping people achieve their health goals remains stronger than ever.',
+            date: 'November 2, 2021'
+          },
+          {
+            title: 'Collaborating for Change Story',
+            text: 'We partnered with local gyms and fitness centers to provide comprehensive wellness programs. This collaboration allowed us to integrate nutrition coaching with fitness training, offering a holistic approach to health and wellness.',
+            date: 'June 15, 2020'
+          },
+          {
+            title: 'Innovating for Health Story',
+            text: 'Nutritionist launched its mobile app, making it easier for clients to track their progress, access meal plans, and communicate with their coaches. The app has since become an integral part of our service, providing real-time support and motivation.',
+            date: 'January 5, 2019'
+          },
+          {
+            title: 'Expanding Our Reach Story',
+            text: 'We opened our first physical clinic, providing a space for in-person consultations and workshops. This expansion allowed us to connect with our community on a deeper level and offer hands-on support for their journey.',
+            date: 'April 20, 2018'
+          },
+          {
+            title: 'Celebrating Success Story',
+            text: 'Our clients have achieved remarkable results, from weight loss milestones to improved management of chronic conditions. We celebrated these successes with a community event, sharing stories of resilience and transformation.',
+            date: 'September 12, 2017'
+          },
+          {
+            title: 'Building a Community Story',
+            text: 'We launched our online community forum, a safe space for clients to share their experiences, ask questions, and support one another. This community has grown into a vibrant network of individuals dedicated to living healthier lives.',
+            date: 'February 28, 2016'
+          },
+          {
+            title: 'Educating for Wellness Story',
+            text: 'Nutritionist started a series of free webinars and workshops to educate the public on the importance of nutrition and healthy habits. These events have reached thousands of people, inspiring them to take charge of their health.',
+            date: 'May 8, 2015'
+          },
+          {
+            title: 'The Beginning of Our Journey Story',
+            text: 'Nutritionist was founded with a passion for health and a desire to make a difference. We started with a small team and a big dream: to revolutionize the way people think about food and nutrition.',
+            date: 'October 1, 2014'
+          }
+        ]
+
+      each story, index in stories
+        +storyCard(
+          `/images/story${index + 1}.png`,
+          story.title,
+          story.text,
+          story.date,
+          index % 2 !== 0
+        )

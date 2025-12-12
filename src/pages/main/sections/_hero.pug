@@ -1,0 +1,29 @@
+include ../../../mixins/_mixins
+
+section.hero
+  .hero__content
+    .hero__image
+      picture
+        source(media="(max-width: 500px)" srcset="/images/hero-mobile.png")
+        source(media="(max-width: 768px)" srcset="/images/hero-tablet.png")
+        source(media="(max-width: 1280px)" srcset="/images/hero-laptop.png")
+        img(src="/images/hero-desktop.png" alt="Nutrition Coach")
+    .hero__text-wrapper
+      .hero__text
+        p.hero__subtitle Transform Your ❤️ Health with
+        h1.hero__title Personalized Nutrition Coaching
+        p.hero__description Welcome to Nutritionist, your partner in achieving optimal health through personalized nutrition coaching. Our certified nutritionists are here to guide you on your weight loss journey, providing customized plans and ongoing support. Start your transformation today and experience the power of personalized nutrition coaching.
+        .hero__buttons
+          +button('Get Starter Today', '#', 'primary')
+          +button('Book a Demo', '#', 'secondary')
+        .hero__customers
+          .hero__customers-avatars
+            a.hero__customer-avatar(href="#")
+              img(src="/images/hero-customer1.png" alt="Customer")
+            a.hero__customer-avatar(href="#")
+              img(src="/images/hero-customer2.png" alt="Customer")
+            a.hero__customer-avatar(href="#")
+              img(src="/images/hero-customer3.png" alt="Customer")
+          span.hero__customers-text 
+            span 430+ 
+            | Happy Customers

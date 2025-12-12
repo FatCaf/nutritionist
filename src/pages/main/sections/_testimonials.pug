@@ -1,0 +1,30 @@
+include ../../../mixins/_mixins
+
+section.testimonials#testimonials
+  .container
+    +sectionHeader('Our Testimonials', 'Our satisfied clients share their transformative experiences with Nutritionist.')
+    
+    .testimonials__carousel
+      .testimonials__track
+        +testimonialCard('I can\'t thank Nutritionist enough for their personalized nutrition coaching. It has completely transformed my approach to food and helped me shed those extra pounds. Highly recommended!', 'quoter1', 'Jennifer Anderson')
+        
+        +testimonialCard('Nutritionist has been a game-changer for me. The expert guidance and support I received from their team made my weight loss journey so much easier. Thank you!', 'quoter2', 'Robert Johnson')
+        
+        +testimonialCard('I had struggled with my weight for years until I found Nutritionist. Their personalized approach and tailored nutrition plan made all the difference. I\'ve never felt better!', 'quoter3', 'Emily Davis')
+        
+        +testimonialCard('The team at Nutritionist truly cares about their clients. They helped me develop healthy eating habits that I can maintain for life. Absolutely wonderful experience!', 'quoter1', 'Michael Chen')
+        
+        +testimonialCard('After trying countless diets, Nutritionist finally helped me understand my body\'s needs. The results have been amazing and sustainable. Highly recommend their services!', 'quoter2', 'Sarah Williams')
+        
+        +testimonialCard('Working with Nutritionist has been life-changing. Their evidence-based approach and constant support helped me achieve my health goals faster than I ever imagined.', 'quoter3', 'David Thompson')
+    
+    .testimonials__nav
+      button.testimonials__arrow.testimonials__arrow--prev(type="button" aria-label="Previous testimonials")
+        svg(width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
+          path(d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
+      
+      .testimonials__dots
+      
+      button.testimonials__arrow.testimonials__arrow--next(type="button" aria-label="Next testimonials")
+        svg(width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
+          path(d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")

@@ -1,0 +1,14 @@
+include ../../../mixins/_mixins
+
+section.team-grid
+  .container
+    .team-grid__members
+      - 
+        const team = [
+          { name: 'Sarah Mitchell', role: 'Founder and CEO' },
+          { name: 'Emily Thompson', role: 'Chief Operating Officer' },
+          { name: 'John Davis', role: 'Chief Financial Officer' },
+          { name: 'Rachel Adams', role: 'Chief Marketing Officer' }
+        ]
+      each member, i in team
+        +teamMember(member.name, member.role, `../../../images/team-member${i + 1}.png`)

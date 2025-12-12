@@ -1,0 +1,117 @@
+mixin button(text, href, variant)
+  - var btnClass = variant === 'primary' ? 'btn btn--primary' : variant === 'secondary' ? 'btn btn--secondary' : 'btn'
+  a(href=href class=btnClass)= text
+
+mixin featureCard(icon, title, description)
+  .feature-card
+    .feature-card__icon
+      img(class=icon src=`/images/${icon}.svg` alt=title)
+    h3.feature-card__title= title
+    p.feature-card__description= description
+
+mixin blogCardControls()
+  .blog-card__stats
+    span.blog-card__icon
+      svg(width='24' height='24' viewbox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg')
+        path(d='M22 8.86222C22 10.4087 21.4062 11.8941 20.3458 12.9929C17.9049 15.523 15.5374 18.1613 13.0053 20.5997C12.4249 21.1505 11.5042 21.1304 10.9488 20.5547L3.65376 12.9929C1.44875 10.7072 1.44875 7.01723 3.65376 4.73157C5.88044 2.42345 9.50794 2.42345 11.7346 4.73157L11.9998 5.00642L12.2648 4.73173C13.3324 3.6245 14.7864 3 16.3053 3C17.8242 3 19.2781 3.62444 20.3458 4.73157C21.4063 5.83045 22 7.31577 22 8.86222Z' stroke='#4C4C4C' stroke-width='2' stroke-linejoin='round')
+    span.blog-card__icon
+      svg(width='24' height='24' viewbox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg')
+        path(d='M5 21V5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V21L13.0815 17.1953C12.4227 16.7717 11.5773 16.7717 10.9185 17.1953L5 21Z' stroke='#4C4C4C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+
+
+mixin blogCard(image, category, title, description, author, authorImage, date, likes, comments)
+  article.blog-card
+    .blog-card__image
+      img(src=image alt=title)
+    .blog-card__content
+      span.blog-card__category= category
+      h3.blog-card__title= title
+      p.blog-card__description= description
+      .blog-card__meta
+        .blog-card__author
+          img.blog-card__author-image(src=authorImage alt=author)
+          span.blog-card__author-name= author
+        +blogCardControls()
+
+mixin testimonialCard(quote, image, author)
+  .testimonial-card
+    .testimonial-card__quote
+      img.icon-quote(src='/images/quote.svg' alt='Quote')
+    p.testimonial-card__text= quote
+    .testimonial-card__author
+      img.testimonial-card__author-image(src=`/images/${image}.png` alt=author)
+      span.testimonial-card__name= author
+
+mixin pricingCard(plan, price, period, features, featured)
+  .pricing-card(class=featured ? 'pricing-card--featured' : '')
+    h3.pricing-card__plan= plan
+    .pricing-card__price
+      span.pricing-card__currency $
+      span.pricing-card__amount= price
+      span.pricing-card__period= '/' + period
+    ul.pricing-card__features
+      each feature in features
+        li.pricing-card__feature= feature
+    +button('Choose Plan', '#', featured ? 'primary' : 'secondary')
+
+mixin sectionHeader(title, description)
+  .section-header
+    h2.section-header__title= title
+    if description
+      p.section-header__description= description
+
+mixin navLink(text, href, active)
+  li.nav__item
+    a.nav__link(href=href class=active ? 'nav__link--active' : '')= text
+
+mixin socialLink(icon, href)
+  a.social-link(href=href target="_blank" rel="noopener")
+    i(class=icon)
+
+mixin teamMember(name, role, imageSrc)
+  .team-member-card
+    .team-member-card__image
+      img(src=imageSrc alt=name)
+    .team-member-card__info
+      h3.team-member-card__name= name
+      p.team-member-card__role= role
+mixin processStep(number, title, description)
+  .process-step
+    .process-step__number= number
+    .process-step__content
+      h3.process-step__title= title
+      p.process-step__description= description
+
+mixin cta(title, description, buttonText, buttonHref)
+  .cta-section
+    .cta-section__content
+      h2.cta-section__title= title
+      p.cta-section__description= description
+    +button(buttonText, buttonHref, 'primary')
+
+mixin pageHeader(title, description, buttons)
+  .page-header(class=!buttons ? 'page-header--no-nav' : '')
+    .page-header__content
+      .page-header__icon
+        img(src='/images/page-header-icon.svg' alt='')
+      h1.page-header__title= title
+      p.page-header__description= description
+    
+    if buttons
+      .page-header__buttons-container
+        .page-header__buttons
+          each btn, index in buttons
+            button.page-header__button(class=index === 0 ? 'page-header__button--active' : '')= btn
+mixin storyCard(image, title, text, date, isReversed)
+  .story-card(class=isReversed ? 'story-card--reversed' : '')
+    .story-card__image
+      img(src=image alt=title)
+    .story-card__content
+      h3.story-card__title= title
+      p.story-card__text= text
+      p.story-card__date= date
+      
+mixin numberedFeatureCard(number, icon, title, description)
+  .process-card
+    .process-card__number= number
+    +featureCard(icon, title, description)
