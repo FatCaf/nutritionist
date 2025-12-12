@@ -1,6 +1,10 @@
 import '../styles/styles.css';
 import { gsap } from 'gsap';
-import L from 'leaflet';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
 	initTestimonialsCarousel();
@@ -9,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initPricingSwitch();
 	initMap();
 	initContactForm();
+	initActiveLink();
 });
 
 function initMap() {
@@ -18,63 +23,28 @@ function initMap() {
 	const lat = 28.6139;
 	const lng = 77.209;
 
-	const map = L.map('map').setView([lat, lng], 13);
-
-	// L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-	// 	attribution:
-	// 		'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	// 	subdomains: 'abcd',
-	// 	maxZoom: 20,
-	// 	vectorTileLayerStyles: {
-	// 		road: {
-	// 			weight: 1.5,
-	// 			color: 'red',
-	// 		},
-	// 		landuse: {
-	// 			fill: true,
-	// 			fillColor: '#2b2b2b',
-	// 		},
-	// 		water: {
-	// 			fill: true,
-	// 			fillColor: '#1e90ff',
-	// 		},
-	// 	},
-	// }).addTo(map);
-
-	L.vectorGrid
-		.protobuf(
-			`https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=${process.env.MAP_LITER_KEY}`,
-			{
-				maxZoom: 20,
-				vectorTileLayerStyles: {
-					transportation: (p) => ({
-						color: '#ff3b3b',
-						weight: 2,
-					}),
-					landcover: (p) => ({
-						fill: true,
-						fillColor: '#1b1b1b',
-					}),
-					water: (p) => ({
-						fill: true,
-						fillColor: '#3c8bff',
-					}),
-				},
-			}
-		)
-		.addTo(map);
-
-	const greenIcon = L.icon({
-		iconUrl: '/images/pin.svg',
-		iconSize: [38, 95],
-		iconAnchor: [22, 94],
-		popupAnchor: [-3, -76],
+	const map = new maplibregl.Map({
+		container: 'map',
+		style: `https://api.maptiler.com/maps/basic-v2-dark/style.json?key=${process.env.MAP_LITER_KEY}`,
+		center: [lng, lat],
+		zoom: 13,
 	});
 
-	L.marker([lat, lng])
-		.addTo(map)
-		.bindPopup('Nutritionist HQ<br> Some Where in the World')
-		.openPopup();
+	const el = document.createElement('div');
+	el.className = 'marker';
+	el.style.backgroundImage = 'url(/images/pin.svg)';
+	el.style.width = '40px';
+	el.style.height = '40px';
+	el.style.backgroundSize = '100%';
+
+	new maplibregl.Marker(el)
+		.setLngLat([lng, lat])
+		.setPopup(
+			new maplibregl.Popup({ offset: 25 }).setHTML(
+				'Nutritionist HQ<br> Some Where in the World'
+			)
+		)
+		.addTo(map);
 }
 
 function initContactForm() {
@@ -280,4 +250,12 @@ function initTestimonialsCarousel() {
 
 	createDots();
 	updateButtons();
+}
+
+function initActiveLink() {
+	document.querySelectorAll('.nav-link').forEach(link => {
+	  if (link.getAttribute('href') === location.pathname) {
+	    link.classList.add('active');
+	  }
+	});
 }

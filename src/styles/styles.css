@@ -1,4 +1,5 @@
 @import './base.css';
+@import './layout.css';
 @import './pages/main.css';
 @import './pages/about.css';
 @import './pages/team.css';

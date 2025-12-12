@@ -124,12 +124,13 @@ mixin numberedFeatureCard(number, icon, title, description)
 mixin blogPageCard(category, image, title, description)
         article.blog-page-card
           .blog-page-card__header
-             p.blog-page-card__category= category
+             +dynamicTitle('p', category, 'blog-page-card__category')
           .blog-page-card__image
-            img(src=`/images/${image}.png` alt=title)
+            .blog-page-card__image-wrapper
+              img(src=`/images/${image}.png` alt=title)
           .blog-page-card__content
             .blog-page-card__text
-               +dynamicTitle('h3', title, 'blog-page-card__title')
+               h3.blog-page-card__title= title
                p.blog-page-card__description= description
             +button('Read More', '#', 'primary')
 
