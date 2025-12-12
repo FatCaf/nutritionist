@@ -5,12 +5,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const pages = [
 	{ template: './src/pages/main/index.pug', filename: 'index.html' },
 	{ template: './src/pages/about/about.pug', filename: 'about.html' },
 	{ template: './src/pages/team/team.pug', filename: 'team.html' },
 	{ template: './src/pages/process/process.pug', filename: 'process.html' },
+	{ template: './src/pages/pricing/pricing.pug', filename: 'pricing.html' },
+	{ template: './src/pages/blog/blog.pug', filename: 'blog.html' },
+	{ template: './src/pages/contact/contact.pug', filename: 'contact.html' },
 ];
 
 const htmlPlugins = pages.map(
@@ -78,6 +82,7 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
+		new Dotenv(),
 		...htmlPlugins,
 		new MiniCssExtractPlugin({
 			filename: 'styles.css',
@@ -103,6 +108,9 @@ module.exports = {
 				{ from: /^\/about/, to: '/about.html' },
 				{ from: /^\/team/, to: '/team.html' },
 				{ from: /^\/process/, to: '/process.html' },
+				{ from: /^\/pricing/, to: '/pricing.html' },
+				{ from: /^\/blog/, to: '/blog.html' },
+				{ from: /^\/contact/, to: '/contact.html' },
 				{ from: /./, to: '/index.html' },
 			],
 		},

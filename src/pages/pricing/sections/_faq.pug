@@ -1,0 +1,34 @@
+include ../../../mixins/_mixins
+
+section.faq
+  .container
+    .section-header
+      h2.section-header__title FAQ
+      p.section-header__description We address commonly asked questions and provide comprehensive answers to help you navigate your way through your nutrition and wellness journey.
+
+    .faq__content
+      .faq__list
+        mixin faqItem(question, answer)
+          .faq__item
+            .faq__question
+              h3= question
+              button.faq__toggle
+                span.plus +
+                span.minus -
+            .faq__answer
+              p= answer
+
+        +faqItem('What is personalized nutrition coaching?', 'Personalized nutrition coaching involves creating a customized nutrition plan based on your unique goals, preferences, and dietary requirements. Our team of experts will work closely with you to develop a plan that fits your lifestyle and helps you achieve optimal health and wellness.')
+        +faqItem('How can nutrition coaching help me lose weight?', 'Nutrition coaching helps you lose weight by providing a tailored plan that addresses your specific metabolic needs and lifestyle habits, ensuring sustainable weight loss.')
+        +faqItem('Can I still enjoy my favorite foods while on a nutrition plan?', 'Yes! We believe in balance. Your nutrition plan will include strategies to enjoy your favorite foods in moderation while still meeting your health goals.')
+        +faqItem('How often will I have contact with my nutritionist?', 'Frequency of contact depends on your plan. Basic plans typically include monthly check-ins, while premium plans offer weekly or even daily support.')
+        +faqItem('How long will it take to see results?', 'Results vary by individual, but most clients start seeing noticeable changes in their energy levels within 2 weeks and physical changes within 4-6 weeks.')
+        +faqItem('Are the meal plans and recipes provided suitable for vegetarians or vegans?', 'Absolutely. We cater to all dietary preferences and restrictions, including vegetarian, vegan, gluten-free, and more.')
+
+      .faq__ask
+        .faq__ask-content
+          .faq__ask-icon
+             img(src="../../../images/logo-big.svg" alt="")
+          h3.faq__ask-title Ask your question
+          p.faq__ask-description Feel free to ask questions on anything
+          +button('Ask A Question', '/contact.html', 'primary')

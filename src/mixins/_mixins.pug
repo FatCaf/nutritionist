@@ -2,6 +2,9 @@ mixin button(text, href, variant)
   - var btnClass = variant === 'primary' ? 'btn btn--primary' : variant === 'secondary' ? 'btn btn--secondary' : 'btn'
   a(href=href class=btnClass)= text
 
+mixin dynamicTitle(tag, text, className)
+  #{tag}(class=`dynamic-title ${className}`)= text
+
 mixin featureCard(icon, title, description)
   .feature-card
     .feature-card__icon
@@ -92,8 +95,10 @@ mixin cta(title, description, buttonText, buttonHref)
 mixin pageHeader(title, description, buttons)
   .page-header(class=!buttons ? 'page-header--no-nav' : '')
     .page-header__content
+      .page-header__image
+        img(src='/images/page-header-bg.png' alt='Header Background')
       .page-header__icon
-        img(src='/images/page-header-icon.svg' alt='')
+        img(src='/images/page-header-icon.svg' alt='Header Icon')
       h1.page-header__title= title
       p.page-header__description= description
     
@@ -107,7 +112,7 @@ mixin storyCard(image, title, text, date, isReversed)
     .story-card__image
       img(src=image alt=title)
     .story-card__content
-      h3.story-card__title= title
+      +dynamicTitle('h3', title, 'story-card__title')
       p.story-card__text= text
       p.story-card__date= date
       
@@ -115,3 +120,22 @@ mixin numberedFeatureCard(number, icon, title, description)
   .process-card
     .process-card__number= number
     +featureCard(icon, title, description)
+
+mixin blogPageCard(category, image, title, description)
+        article.blog-page-card
+          .blog-page-card__header
+             p.blog-page-card__category= category
+          .blog-page-card__image
+            img(src=`/images/${image}.png` alt=title)
+          .blog-page-card__content
+            .blog-page-card__text
+               +dynamicTitle('h3', title, 'blog-page-card__title')
+               p.blog-page-card__description= description
+            +button('Read More', '#', 'primary')
+
+mixin contactItem(text, additionalClass)
+  .contact-item(class=additionalClass)
+    .contact-item__icon
+      block
+    .contact-item__content
+      span= text

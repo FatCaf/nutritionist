@@ -485,11 +485,11 @@
 }
 
 .pricing-card {
-	background-color: var(--color-white);
+	background-color: var(--color-green95);
 	border-radius: var(--border-radius-xl);
 	padding: var(--spacing-2xl);
 	text-align: center;
-	border: 2px solid var(--color-border);
+	border: 2px solid var(--color-green90);
 	transition:
 		transform var(--transition-base),
 		box-shadow var(--transition-base);
@@ -647,6 +647,9 @@
 }
 
 @media (max-width: 480px) {
+	.hero__content {
+		display: block;
+	}
 	.hero__buttons {
 		flex-direction: column;
 	}

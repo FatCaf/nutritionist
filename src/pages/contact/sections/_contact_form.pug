@@ -1,0 +1,28 @@
+include ../../../mixins/_mixins
+
+section.contact-form-section
+  .container
+    .contact-form-wrapper
+      .contact-form-container
+        form#contactForm.contact-form
+          .form-group
+            label(for="fullName") Full Name
+            input#fullName(type="text" name="fullName" placeholder="Enter your Name" required)
+          
+          .form-group
+            label(for="email") Email
+            input#email(type="email" name="email" placeholder="Enter your Email" required)
+            
+          .form-group
+            label(for="phone") Phone Number
+            input#phone(type="tel" name="phone" placeholder="Enter your Number")
+            
+          .form-group
+            label(for="message") Message
+            textarea#message(name="message" placeholder="Enter your Message" rows="4" required maxlength="250")
+            span.char-count Max 250 Chars
+            
+          button.btn.btn--primary(type="submit") Send Message
+          
+      .map-container
+        #map

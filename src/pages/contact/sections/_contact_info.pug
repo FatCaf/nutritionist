@@ -1,0 +1,13 @@
+include ../../../mixins/_mixins
+
+section.contact-info
+  .container
+    .contact-info__grid
+      +contactItem('support@nutritionist.com', 'contact-card')
+        i.fas.fa-envelope
+      
+      +contactItem('+91 00000 00000', 'contact-card')
+        i.fas.fa-phone-alt
+      
+      +contactItem('Some Where in the World', 'contact-card')
+        i.fas.fa-map-marker-alt

@@ -1,0 +1,20 @@
+include ../../../mixins/_mixins
+
+section.pricing-section
+  .container
+    .pricing__toggle
+      span.pricing__toggle-label Monthly
+      label.pricing__switch
+        input(type="checkbox")
+        span.pricing__slider
+      span.pricing__toggle-label Yearly
+    
+    .pricing__grid
+      - var basicFeatures = ['Personalized nutrition plan', 'Access to mobile app', 'Email support', 'Basic progress tracking']
+      +pricingCard('Basic Plan', '49', 'month', basicFeatures, false)
+      
+      - var premiumFeatures = ['Everything in Basic', 'Weekly 1-on-1 coaching calls', 'Priority email support', 'Advanced progress analytics', 'Custom meal recipes']
+      +pricingCard('Premium Plan', '79', 'month', premiumFeatures, true)
+      
+      - var ultimateFeatures = ['Everything in Premium', 'Unlimited coaching calls', '24/7 priority support', 'Personalized workout plans', 'Exclusive community access']
+      +pricingCard('Ultimate Plan', '99', 'month', ultimateFeatures, false)

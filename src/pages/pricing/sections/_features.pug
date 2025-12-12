@@ -1,0 +1,50 @@
+include ../../../mixins/_mixins
+
+section.features-table
+  .container
+    .section-header
+      h2.section-header__title Compare Our Plans
+      p.section-header__description Find the perfect plan that fits your health goals and lifestyle.
+
+    .features-table__wrapper
+      table.features-table__content
+        thead
+          tr
+            th
+              span.features-table__tag Features
+            th
+              span.features-table__tag Basic Plan
+            th
+              span.features-table__tag Premium Plan
+            th
+              span.features-table__tag Ultimate Plan
+        tbody
+          mixin featureRow(name, basic, premium, ultimate)
+            tr
+              td.features-table__feature= name
+              td
+                if basic
+                  img(src="/images/check-icon.svg" alt="Included")
+                else
+                  img(src="/images/cross-icon.svg" alt="Not Included")
+              td
+                if premium
+                  img(src="/images/check-icon.svg" alt="Included")
+                else
+                  img(src="/images/cross-icon.svg" alt="Not Included")
+              td
+                if ultimate
+                  img(src="/images/check-icon.svg" alt="Included")
+                else
+                  img(src="/images/cross-icon.svg" alt="Not Included")
+
+          +featureRow('Personalized Nutrition Plan', true, true, true)
+          +featureRow('Mobile App Access', true, true, true)
+          +featureRow('Email Support', true, true, true)
+          +featureRow('One-on-One Video Consultations', false, true, true)
+          +featureRow('Recipe Recommendations and Meal Planning', false, true, true)
+          +featureRow('Priority Support', false, true, true)
+          +featureRow('Educational Resources and Guides', false, true, true)
+          +featureRow('Advanced Progress Tracking Tools', false, false, true)
+          +featureRow('Customized Meal Plans and Recipe Suggestions', false, false, true)
+          +featureRow('Phone Support', false, false, true)

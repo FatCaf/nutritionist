@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Contact Us - Nutritionist
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css")
+  body
+    include ../layout/_header
+    
+    main.main
+      include sections/_contact_header
+      include sections/_contact_info
+      include sections/_contact_form
+      
+      section.cta-wrapper
+        .container
+           +cta(
+             'Are you ready to embark on a transformative journey towards better health and wellness?',
+             'Join us at Nutritionist and let us guide you on the path to a healthier and happier you.',
+             'Join Us Now',
+             '/pricing.html'
+           )
+    
+    include ../layout/_footer
